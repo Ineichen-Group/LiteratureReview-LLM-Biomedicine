@@ -1,0 +1,46 @@
+﻿Title domain of automated approach.1,Target application,Sum of Included
+General biomedical text mining,Multi-Domain,13
+Pharma,Relation Extraction,13
+Literature Screening,Text Classification,11
+Literature-Based Discovery,Information Retrieval,10
+General biomedical text mining,Named Entity Recognition,9
+General biomedical text mining,Entity Normalization/Linking,8
+Clinical,Text Classification,8
+Biomedical Literature Curation,Text Classification,7
+General biomedical text mining,Information Extraction,5
+General biomedical text mining,Relation Extraction,5
+Media for Health Care,Text Classification,5
+Literature-Based Discovery,Text Summarization,4
+Literature-Based Discovery,Knowledge Graph,3
+Media for Health Care,Fact Verification,2
+Biomedical Literature Curation,Information Extraction,2
+Literature-Based Discovery,Information Extraction,2
+Pharma,Multi-Domain,2
+Literature Screening,Named Entity Recognition,2
+General biomedical text mining,Other,2
+General biomedical text mining,Text Classification,2
+Pharma,Text Classification,2
+Media for Health Care,Entity Normalization/Linking,1
+Clinical,Explainable AI,1
+Biological Functions,Information Extraction,1
+Evidence-Based Medicine,Information Extraction,1
+Media for Health Care,Information Extraction,1
+Pharma,Information Extraction,1
+Literature Screening,Information Retrieval,1
+Media for Health Care,Information Retrieval,1
+Evidence-Based Medicine,Machine Reading Coprehension,1
+Literature-Based Discovery,Machine Reading Coprehension,1
+Literature-Based Discovery,Multi-Domain,1
+Media for Health Care,Multi-Domain,1
+Data Privacy,Named Entity Recognition,1
+Evidence-Based Medicine,Named Entity Recognition,1
+Pharma,Named Entity Recognition,1
+Precision Medicine,Named Entity Recognition,1
+General biomedical text mining,Question Answering,1
+Literature-Based Discovery,Question Answering,1
+Data Privacy,Relation Extraction,1
+Literature-Based Discovery,Relation Extraction,1
+Clinical,Similarity Clustering,1
+Literature-Based Discovery,Similarity Clustering,1
+Evidence-Based Medicine,Text Classification,1
+Literature-Based Discovery,Text Classification,1

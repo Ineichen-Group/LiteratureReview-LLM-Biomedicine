@@ -1,0 +1,38 @@
+﻿Title domain of automated approach.1,Target application,Sum of Included
+Pharma,Relation Extraction,12
+General biomedical text mining,Named Entity Recognition,7
+Biomedicla Literature Curation,Text Classification,7
+Literature Screening,Information Retrieval,6
+General biomedical text mining,Multi-Domain,6
+General biomedical text mining,Entity Normalization/Linking,5
+Literature-Based Discovery,Information Retrieval,4
+General biomedical text mining,Relation Extraction,4
+Literature-Based Discovery,Knowledge Graph,3
+Pharma,Text Classification,3
+Pharma,Multi-Domain,2
+General biomedical text mining,Other,2
+Clinical,Text Classification,2
+Evidence-Based Medicine,Text Classification,2
+Literature-Based Discovery,Text Summarization,2
+Social Media for Health Care,Entity Normalization/Linking,1
+Biological Functions,Information Extraction,1
+Embedding representations for bio knowledge,Information Extraction,1
+Evidence-Based Medicine,Information Extraction,1
+General biomedical text mining,Information Extraction,1
+Literature-Based Discovery,Information Extraction,1
+Pharma,Information Extraction,1
+COVID-19 Literature,Information Retrieval,1
+Literature Recommender System,Information Retrieval,1
+Evidence-Based Medicine,Machine Reading Coprehension,1
+Embedding representations for bio knowledge,Multi-Domain,1
+Literature-Based Discovery,Multi-Domain,1
+Anonymization,Named Entity Recognition,1
+Biomedicla Literature Curation,Named Entity Recognition,1
+Literature Screening,Named Entity Recognition,1
+Precision Medicine,Named Entity Recognition,1
+Literature-Based Discovery,Question Answering,1
+Literature-Based Discovery,Relation Extraction,1
+Clinical,Similarity Clustering,1
+Literature-Based Discovery,Similarity Clustering,1
+Literature Screening,Text Classification,1
+Pathogen Characterisation,Text Classification,1
