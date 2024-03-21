@@ -1,4 +1,6 @@
 \documentclass[fleqn,10pt]{olplainarticle}
+\usepackage[numbers]{natbib}
+
 % Use option lineno for line numbers 
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -25,6 +27,7 @@
 
 \keywords{Natural Language Processing, Bioinformatics, Biomedicine, Large Language Models, BERT, evidence synthesis}
 
+
 \begin{abstract}
 The advent of large language models (LLMs) such as BERT and, more recently, GPT, is transforming our approach of analyzing and understanding biomedical texts. To stay informed about the latest advancements in this area, there is a need for up-to-date summaries on the role of LLM in Natural Language Processing (NLP) of biomedical texts. Thus, this scoping review aims to provide a detailed overview of the current state of biomedical NLP research and its applications, with a special focus on the evolving role of LLMs. We conducted a systematic search of PubMed, EMBASE, and Google Scholar for studies and conference proceedings published from 2017 to December 19, 2023, that develop or utilize LLMs for NLP tasks in biomedicine. %We evaluated the risk of bias in these studies using a 3-item checklist. From 13,823 references, we selected 199 publications and conference proceedings for our review. 
 LLMs are being applied to a wide array of tasks in the biomedical field, including knowledge management, text mining, drug discovery, and evidence synthesis. Prominent among these tasks are text classification, relation extraction, and named entity recognition. Although BERT-based models remain prevalent, the use of GPT-based models has substantially increased since 2023. %We conclude that, despite offering opportunities to manage the growing volume of biomedical data, LLMs also present challenges, particularly in clinical medicine and evidence synthesis, such as issues with transparency and privacy concerns.
@@ -39,24 +42,23 @@ LLMs are being applied to a wide array of tasks in the biomedical field, includi
 
 \section*{Introduction}
 
-Natural Language Processing (NLP), a branch of Artificial Intelligence (AI), aims at enabling computers to understand and interpret human language. It has become an indispensable tool for processing and analyzing large volumes of text data, widely adopted in various fields including biomedical research and clinical applications \citep{zhou2022natural}. %The introduction of Large Language Models (LLMs) has advanced the capabilities of NLP, revolutionizing the way we analyze and interpret biomedical texts. These models are notable for their extensive training data and complex architecture, enabling them to grasp context in long passages and excel at a broad array of language tasks, including text generation, translation, and question answering. Prominent examples of LLMs are OpenAI's GPT series and Google's BERT \citep{brown2020language, devlin2018bert}. Given the fast-paced nature of NLP, marked by regular introductions of new tools and solutions, there is a critical need for up-to-date literature overviews. 
-A pivotal advancement in NLP has been the transformer architecture, which underpins most recent Large Language Models (LLMs). The transformer model is appreciated for its efficiency and ability to process data in parallel. This capability, combined with a deep learning architecture that leverages attention mechanisms, allows to handle long dependencies and yields a better contextual understanding as needed when generating text \citep{vaswani2017attention}. Its introduction has led to a significant shift in NLP approaches, from training models from scratch to fine-tuning pre-trained language models.  This feature is particularly beneficial in biomedical applications, where annotated data may be scarce or challenging to obtain. By fine-tuning LLMs on specific tasks, researchers can achieve high performance with relatively small datasets \citep{wang2023pre}.
+Natural Language Processing (NLP), a branch of artificial intelligence, aims at enabling computers to understand and interpret human language. It has become an indispensable tool for processing and analyzing large volumes of text data, widely adopted in various fields including biomedical research and clinical applications \citep{zhou2022natural}. %The introduction of Large Language Models (LLMs) has advanced the capabilities of NLP, revolutionizing the way we analyze and interpret biomedical texts. These models are notable for their extensive training data and complex architecture, enabling them to grasp context in long passages and excel at a broad array of language tasks, including text generation, translation, and question answering. Prominent examples of LLMs are OpenAI's GPT series and Google's BERT \citep{brown2020language, devlin2018bert}. Given the fast-paced nature of NLP, marked by regular introductions of new tools and solutions, there is a critical need for up-to-date literature overviews. 
+A pivotal advancement in NLP has been the transformer architecture, which underpins most recent Large Language Models (LLMs),  including both BERT, Bidirectional Encoder Representations from Transformers, and GPT, Generative Pre-trained Transformer. The transformer model is appreciated for its efficiency and ability to process data in parallel. This capability, combined with a deep learning architecture that leverages attention mechanisms, allows to handle long dependencies and yields a better contextual understanding \citep{vaswani2017attention}. Its introduction has led to a shift in NLP approaches, from training models from scratch to fine-tuning pre-trained language models.  This feature is particularly beneficial in biomedical applications, where annotated data may be scarce or challenging to obtain. By fine-tuning LLMs on specific tasks, researchers can achieve high performance with relatively small datasets \citep{wang2023pre}.
 
-The recent introduction of generative models like GPT represents another paradigm shift towards generative approaches in NLP, contrasting with the earlier focus on discriminative models like BERT \citep{radford2018improving,brown2020language}. While BERT and similar systems are task-oriented and lack expressivity and interactive capabilities (well suited for tasks like sentence classification or entity recognition), generative models like GPT are capable of producing coherent and contextually relevant text based on the input they receive. This capability opens new opportunities for automated content creation, summarization, and question-answering systems in the biomedical domain. However, it also introduces risks, such as the generation of plausible but incorrect or misleading information, underscoring the need for careful evaluation and application of these technologies \citep{thirunavukarasu2023large}.
+Amidst these advancements, the emergence of generative models such as GPT marks an evolution towards creative and generative applications within NLP, setting a contrast to the discriminative nature of earlier models like BERT \citep{radford2018improving,brown2020language}. While BERT and similar systems excel in task-oriented applications such as sentence classification or entity recognition, generative models are capable of producing coherent and contextually relevant text based on the input they receive. This capability opens new opportunities for automated content creation, summarization, and question-answering systems in the biomedical domain. Moreover, generative models excel at employing techniques like instruction tuning and in-context learning, enabling them to understand and perform a wide range of tasks based on natural language instructions or examples, reducing even further the need for task-specific datasets or extensive fine-tuning. However, it also introduces risks, such as the generation of plausible but incorrect or misleading information, underscoring the need for careful evaluation and application of these technologies \citep{thirunavukarasu2023large, ye2023cognitive}.
 
-Given the fast-paced nature of NLP development, there is a need for up-to-date literature overviews. This is particularly true in fields like biomedical research, where the ability to swiftly and accurately process vast amounts of text data can substantially impact patient care and scientific discovery. Thus, this scoping review has three goals: Firstly, we aim to identify and categorize the specific tasks within BioNLP that are currently being addressed using LLMs, e.g., in evidence synthesis,  named entity recognition (NER), or information extraction. Secondly, we aim to map the various LLM architectures employed in these BioNLP tasks. Understanding the architecture is crucial, as it directly impacts the efficacy, accuracy, and applicability of these models in handling the unique challenges presented by biomedical literature. Finally, this study sets out to assess the transparency of methods used in the development of these LLMs, including availability of source code and data as well as used hardware and software.
+Given the fast-paced nature of NLP development, there is a need for up-to-date literature overviews. This is particularly true in fields like biomedical research, where the ability to swiftly and accurately process vast amounts of text data can substantially impact patient care and scientific discovery \citep{locke2021natural}. Thus, this scoping review has three goals: Firstly, we aim to identify and categorize the specific tasks within BioNLP that are currently being addressed using LLMs, e.g., in evidence synthesis,  pharmacology, or clinical use cases. Secondly, we aim to map the various LLM architectures employed in these BioNLP tasks. Finally, this study sets out to assess the transparency of methods used in the development of these LLMs, including availability of source code and data as well as used hardware and software.
 
 
 \subsection*{Related Work}
 
-The work in \citep{kalyan2022ammu} presents the first comprehensive review of the development and landscape of transformer-based biomedical language models. It examines the core implementation principles behind these models and their practical applications for BioNLP tasks. While the focus of that study is predominantly on encoder-based language models, \citep{wang2023pre} expands the discussion to include RNN-based models and those that leverage decoders for generative pre-training. Additionally, it broadens the investigation into biomedical LLMs to include not just textual data but also proteins, DNA, and text-image combinations. Aligning with our goals, \cite{wang2023pre} provide an in-depth exploration of language model applications within the biomedical domain, offering a thorough classification of techniques, datasets, and benchmarking competitions.
+The work presented in \citep{kalyan2022ammu} presented the first comprehensive review of the development and landscape of transformer-based biomedical language models. It examined the core implementation principles behind these models and their practical applications for BioNLP tasks with a focus on encoder-based language models. Subsequent work expanded the discussion to include RNN-based models and those that leverage decoders for generative pre-training \citep{wang2023pre}. Furthermore, the authors extended their exploration of biomedical LLMs to encompass applications beyond textual data, including analyses of proteins, DNA, and text-image pairs. Aligning with our goals, they also provided an in-depth exploration of language model applications within the biomedical domain, offering a thorough classification of techniques, datasets, and benchmarking competitions \citep{wang2023pre}.
 
-Other reviews have concentrated on the use of LLMs within specific niches of biomedical text processing. For example \cite{cesario2024survey} explores how LLMs can enhance downstream tasks in Literature-Based Discovery. Another survey sheds light on biomedical and clinical NLP research conducted in languages other than English, focusing on data resources, language models, and common NLP tasks in these languages. This survey also highlights the growing trend of employing transformer-based language models for various NLP tasks in medical fields \citep{shaitarova2023exploring}.
+Other reviews have concentrated on the use of LLMs within specific niches of biomedical text processing. For instance, how LLMs can enhance downstream tasks in literature-based discovery \cite{cesario2024survey}. Another survey shed light on biomedical and clinical NLP research conducted in languages other than English, focusing on data resources, language models, and common NLP tasks in these languages. This survey also highlighted the growing trend of employing transformer-based language models for various NLP tasks in medical fields \citep{shaitarova2023exploring}.
 
-Recent surveys have delved into the unique challenges posed by deploying LLMs in healthcare, especially concerning fairness and accountability. \cite{he2023survey} provide an overview of the technical
-aspects of development and usage of LLM methods in healthcare. The authors provide an overview over specific challenges encountered in deploying LLMs in the healthcare field, including ethical considerations. Similarly, \cite{thirunavukarasu2023large} review the usage of models like ChatGPT in healthcare, underlining their potential to enhance medical practices while also addressing concerns about safety, ethics, and the human element in patient care. A related systematic review evaluates the benefits and limitations of ChatGPT in healthcare education, research, and practice, based on an analysis of 60 publications from PubMed/MEDLINE and Google Scholar \citep{sallam2023chatgpt}. Also \cite{yang2023large} offer insights into opportunities and challenges of LLMs for biomedical or clinical usage, exploring their potential roles in pre-consultation, diagnosis, and data management, as well as their ability to support medical education and medical writing.
+Recent surveys have delved into the unique challenges posed by deploying LLMs in healthcare, especially concerning fairness and accountability. For example, an overview of the technical aspects of development and usage of LLM methods in healthcare, including the specific challenges such as ethical considerations encountered when deploying this technology in the field, has been provided \citep{he2023survey}. Similarly, the potential of models such as ChatGPT to enhance medical practices, while addressing concerns about safety, ethics, and maintaining the human element in patient care, has been reviewed in \cite{thirunavukarasu2023large}. A related systematic review evaluated the benefits and limitations of ChatGPT in healthcare education, research, and practice, based on an analysis of 60 publications from PubMed/MEDLINE and Google Scholar \citep{sallam2023chatgpt}.  Insights into the opportunities and challenges of LLMs for biomedical or clinical usage, including their roles in pre-consultation, diagnosis, data management, and their support for medical education and writing, have also been offered in \citep{yang2023large}. %offered insights into opportunities and challenges of LLMs for biomedical or clinical usage, exploring their potential roles in pre-consultation, diagnosis, and data management, as well as their ability to support medical education and medical writing.
 
-Compared to these contributions, the present scoping review focuses on  discriminative and generative LLM architectures in biomedicine. By employing a systematic review methodology, we not only provide a comprehensive overview over the field but also show quantitative data including trends over time. In addition, our review systematically scrutininzes transparency and Open Science aspects of bioNLP. 
+In the present scoping review, we conduct an examination of the usage of both discriminative and generative LLM architectures in biomedicine, employing a robust systematic review methodology. We present in-depth quantitative analyses, uncover trends over time, and critically assess transparency and Open Science pracrtices in the bioNLP field, thereby enriching the insights of existing research.
 
 
 %%% SIJING's inputs below:
@@ -88,19 +90,16 @@ We excluded non-English publications as well as text data derived from clinical 
 
 \subsection*{Study selection}
 
-All retrieved publications were screened using ASReview,  which incorporates a machine learning algorithms to prioritize relevant studies \citep{van2021open}. We established a rule in advance to cease the screening of abstracts once we encountered thirty consecutive irrelevant abstracts. Following this, any remaining abstracts were excluded from further analysis.
+All retrieved publications were screened using ASReview,  which incorporates machine learning algorithms to prioritize relevant studies \citep{van2021open}. We established a rule in advance to cease the screening of abstracts once we encountered thirty consecutive irrelevant abstracts. Following this, any remaining abstracts were excluded from further analysis.
 
 \subsection*{Data extraction and synthesis}
-The following data were extracted from available full texts of eligible articles: target NLP application (grouped into pre-specified classes), biomedical domain of the application, target database, data type (e.g., abstracts), data availability, hosted application for end-users, LLM (e.g., BioBERT), programming language (e.g., Python), library/framework (e.g., HuggingFace), reported performance metrics (e.g., F1-score), source code availability, pretraining corpus origin (e.g., PubMed abstracts), fine-tuning corpus data/task (e.g., bc5cdr), fine-tuning corpus size, number of tasks/datasets for performance evaluation, hardware type (e.g., GPU). These criteria were developed and iteratively improved over a pilot extraction round conducted by two authors (SED and BVI). %Interrater agreement for data extraction was assessed by independent duplicate extraction of 10 studies by two authors (SED and SQ). 
+The following data were extracted from available full texts of eligible articles: target NLP application (grouped into pre-specified classes), biomedical domain of the application, target database from which the methods were developed (e.g., PubMed), data type (e.g., abstracts), data availability, hosted application for end-users, LLM (e.g., BioBERT), programming language (e.g., Python), library/framework (e.g., HuggingFace), reported performance metrics (e.g., F1-score), source code availability, pretraining corpus origin (if pre-training was performed, which data was used, e.g., COVID-19 Open Research Dataset), fine-tuning corpus data/task (e.g., BC5), fine-tuning corpus size, number of tasks/datasets for performance evaluation, hardware type (e.g., GPU). These criteria were developed and iteratively improved over a pilot extraction round conducted by two authors (SED and BVI). %Interrater agreement for data extraction was assessed by independent duplicate extraction of 10 studies by two authors (SED and SQ). 
 
 We summarized our findings in a narrative fashion bolstered by descriptive statistics of extracted parameters.
 
 
 \subsection*{Risk of bias assessment}
 We assessed the quality of each study against three predefined criteria: 1) Is the process of splitting training from validation data described? 2) Are there methods described for avoiding overfitting or underfitting?  3) Does the dataset or assessment measure provide a possibility to compare to other tools in the same domain?
-
-\subsection*{Data and code availability}
-The complete data extraction sheets and code for the data analysis is made available in a GitHub repository\footnote{\url{https://github.com/Ineichen-Group/LiteratureReview-LLM-Biomedicine/tree/main}}.
 
 \subsection*{Changes from protocol}
 While in our initial protocol, we were planning to evaluate all ML-based approaches for BioNLP, we decided to shift the focus to specifically evaluating the emerging field of LLMs. 
@@ -111,7 +110,7 @@ While in our initial protocol, we were planning to evaluate all ML-based approac
 \subsection*{Eligible publications}
 
 In total, 13,823 publications were retrieved from our database search. 224 publications were eligible for full-text screening (TODO Figure \ref{fig:prisma_view}).
-A total of 196 articles were included in our final review, with 137 coming from the biomedical journals and 59 from the NLP conference outputs (Figure \ref{fig:top_10_journals_venues_and_time_distribution}). Figure \ref{fig:top_10_journals_venues_and_time_distribution} also shows the key sources of these articles, highlighting contributions from acknowledged NLP venues like the ACL/Findings and the EMNLP conferences, as well as biomedical journals such as BMC Bioinformatics and the Journal of Biomedical Informatics.
+A total of 196 articles were included in our final review, with 137 coming from the biomedical journals and 59 from the NLP conference outputs (Figure \ref{fig:top_10_journals_venues_and_time_distribution} \textbf{A}). Figure \ref{fig:top_10_journals_venues_and_time_distribution} \textbf{B} also shows the key sources of these articles, highlighting contributions from acknowledged NLP venues such as the ACL/Findings and the EMNLP conferences, as well as biomedical journals such as BMC Bioinformatics and the Journal of Biomedical Informatics.
 
 % \begin{figure}[h]
 % \centering
@@ -124,24 +123,24 @@ A total of 196 articles were included in our final review, with 137 coming from 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.3]{visuals/new_pdf/overview_years_and_journal_count_2024.pdf} % Adjust the scale value as needed
-\caption{Left panel: Number of included articles over the chosen time frame. Right panel:Number of articles from the top 10 venues and journals.}
+\caption{\textbf{A}: Number of included articles over the chosen time frame. \textbf{B}: Top 10 sources of included articles and their frequency, including  NLP venues and biomedical journals.}
 \label{fig:top_10_journals_venues_and_time_distribution}
 \end{center}
 \end{figure}
 
 \subsubsection*{Risk of bias of eligible articles}
-The overall risk of bias was moderate with 89\% of studies reporting how/whether training and validation data were split, 25\% of studies explicitly reported measures to mitigate over-/underfitting of models, and 84\% of studies report on benchmarking their approaches against other methods. %TODO: limitation: likely some of the papers did do the things, but were not mentioned
+The overall risk of bias was moderate with 89\% of studies reporting whether training and validation data were split, 25\% of studies explicitly reported measures to mitigate over-/underfitting of models, and 84\% of studies report on benchmarking their approaches against other methods. %TODO: limitation: likely some of the papers did do the things, but were not mentioned
 
 
 \subsection*{Applications}
 
 \subsubsection*{Data Sources and Data Types}
-Figure \ref{fig:top_10_data_sources_and_types} introduces the top 10 data sources used to inform the training and refinement phases of the LLMs development. The most frequently reported ones were PubMed/Medline (131 publications, 58\%), clinical texts (i.e., textual data generated in clinical settings like electronic health records; 41, 18\%), and social media (16, 7\%).
+Figure \ref{fig:top_10_data_sources_and_types} introduces the top 10 data sources used to inform the training and refinement phases of the LLMs development. The most frequently reported ones were PubMed/Medline (131 publications, 58\%), clinical texts (i.e., textual data generated in clinical settings such as electronic health records; 41, 18\%), and social media (16, 7\%).
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.3]{visuals/new_pdf/top_10_data_types_and_sources_frequency_2024.pdf} % Adjust the scale value as needed
-\caption{Frequency of specific data sources (left panel) and data types (right panel) used for LLM development and testing. A paper could use more than one data source and type.}
+\caption{Frequency of specific data sources (\textbf{A}) and data types (\textbf{B}) used for LLM development and testing. A paper could use more than one data source and type.}
 \label{fig:top_10_data_sources_and_types}
 \end{center}
 \end{figure}
@@ -149,30 +148,29 @@ Figure \ref{fig:top_10_data_sources_and_types} introduces the top 10 data source
 The most commonly used data types were abstracts (115 publications, 50\%) and full texts of scientific articles (49, 21\%) as well as clinical notes (17, 7\%) (Figure \ref{fig:top_10_data_sources_and_types}).
 
 \subsubsection*{Biomedical Application Domains}
-Eligible publications were grouped into 7 main categories of biomedical applications for LLMs (see Table \ref{table:domains_application}). The top three categories were knowledge management (62 publications, 32\%), general biomedical text mining (57, 29\%), and pharmacology (24, 12\%) (Figure \ref{fig:domains_and_nlp_tasks_frequency}). Further details about applications within the top 4 most frequent domains are provided in the supplementary materials in Figure \ref{fig:nr_articles_per_subdomain}.
+Eligible publications were grouped into 7 main categories of biomedical applications for LLMs (see Table \ref{table:domains_application}). The top three categories were knowledge management (62 publications, 32\%), general biomedical text mining (57, 29\%), and pharmacology (24, 12\%) (Figure \ref{fig:domains_and_nlp_tasks_frequency} \textbf{A}). Further details about applications within the top 4 most frequent domains are provided in the supplementary materials in Figure S\ref{fig:nr_articles_per_subdomain}.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{l p{10cm}}
 \hline
-\textbf{Domain Category} & \textbf{Definition} \\ \hline
-General Biomedical Text Mining & Developing a new/improved methodology for an NLP task (e.g., NER, dependency parsing). \\ \hline
-Knowledge Management & Knowledge management in NLP involves tasks such as literature-based discovery, curation, and screening, focusing on recommendation, summarization, annotation, and categorization of scientific literature. \\ \hline
-Pharmacology & Development, testing, and understanding of therapeutic agents. \\ \hline
-Media for Health Care & Analyzing media content to extract health-related information, trends, or public sentiments for healthcare applications. \\ \hline
-Clinical & Enhancing clinical decision-making, patient care, and medical record management. \\ \hline
-Evidence Synthesis & The methodological approach used to systematically review, critically appraise, and combine results from multiple studies to draw more robust and comprehensive conclusions about a specific research question or area of interest. \\ \hline
-Biology & Understanding and categorizing biological processes, mechanisms, and interactions. \\ \hline
-
+\textbf{Domain Category}       & \textbf{Definition}                                                                                                          \\ \hline
+Knowledge Management           & Knowledge management in NLP involves tasks such as literature-based discovery, curation, and screening, focusing on recommendation, summarization, annotation, and categorization of scientific literature.                         \\ \hline
+General Biomedical Text Mining & Developing a new/improved methodology for an NLP task (e.g., named entity recognition, dependency parsing).                                        \\ \hline
+Pharmacology                   & Development, testing, and understanding of therapeutic agents.                                                                 \\ \hline
+Media for Health Care          & Analyzing media content to extract health-related information, trends, or public sentiments for healthcare applications.                                                                          \\ \hline
+Clinical                       & Enhancing clinical decision-making, patient care, and medical record management.                                                                            \\ \hline
+Evidence Synthesis             & The methodological approach used to systematically review, critically appraise, and combine results from multiple studies to draw more robust and comprehensive conclusions about a specific research question or area of interest. \\ \hline
+Biology                        & Understanding and categorizing biological processes, mechanisms, and interactions.                                                                        \\ \hline
 \end{tabular}
-\caption{Main application domains for LLMs in biomedicine. Abbreviations: NER, named entity recognition; NLP, natural language processing.}
+\caption{Main application domains for LLMs in biomedicine. Abbreviations: NLP, natural language processing.}
 \label{table:domains_application}
 \end{table}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.30]{visuals/new_pdf/domains_and_nlp_tasks_frequency_2024.pdf} % Adjust the scale value as needed
-\caption{Biomedical domains (left panel) and NLP tasks (right panel) by article frequency. Each paper was assigned to a single primary application domain and one main NLP task.}
+\caption{Biomedical domains (\textbf{A}) and NLP tasks (\textbf{B}) by article frequency. Each paper was assigned to a single primary application domain and one main NLP task.}
 \label{fig:domains_and_nlp_tasks_frequency}
 \end{center}
 \end{figure}
@@ -180,18 +178,19 @@ Biology & Understanding and categorizing biological processes, mechanisms, and i
 
 \subsubsection*{NLP tasks}
 
-A variety of NLP tasks has been employed by the eligible articles, most commonly text classification (55 publications, 28\%), information extraction (27, 14\%), and relation extraction (25, 13\%) (Figure \ref{fig:domains_and_nlp_tasks_frequency}).
+A variety of NLP tasks has been employed by the eligible articles, most commonly text classification (55 publications, 28\%), information extraction (27, 14\%), and relation extraction (25, 13\%) (Figure \ref{fig:domains_and_nlp_tasks_frequency} \textbf{B}).
 Matching the main domains of application with the NLP tasks shows notable links (Figure \ref{fig:sankey}). 
 
-Social media platforms have been utilized for mental health screening, employing text classification to identify suicidal risk and predict mental health disorders from user-generated content, such as Reddit and Twitter posts \citep{zanwar2023fuse, sawhney2022risk, sawhney2020time}. Additionally, this NLP task has been applied for detecting nuanced emotional states within online health communities \citep{sosea2020canceremo}. Another recent development has been the use of fact verification techniques to authenticate statements related to COVID-19 \citep{hossain2020covidlies, liu2020adapting}.
+In knowledge management, LLMs have been used for two main applications: text classification and information retrieval. Text classification can streamline the organization of large literature volumes by assigning predefined categories or labels to documents. This approach has been effectively applied to enhance reference prioritization in systematic reviews \citep{mantas2021classification, aum2021srbert, ambalavanan2020using, habets2022development, jimeno2023classifying}. Text classification has also been used to better understand the structure of papers, for example by automatically predicting sections and headers in Electronic Health Records \citep{rosenthal2019leveraging}. Information retrieval focuses on enabling users to find and access the specific information they need from among vast amounts of available content. Various applications have been developed to improve the discovery of novel insights by more effectively aggregating data from existing knowledge databases, as well as improving article recommendation service \citep{martenot2022lisa, kart2022emati}. For instance, pubmedKB serves as a web server designed to extract and visualize semantic relationships between genes, diseases, chemicals, and variants within PubMed abstracts \citep{li2022pubmedkb}.
 
-In knowledge management, LLMs have been used for two main applications: text classification and information retrieval. Text classification can streamline the organization of large literature volumes by assigning predefined categories or labels to documents. This approach has been effectively applied to enhance reference prioritization in systematic reviews \citep{mantas2021classification, aum2021srbert, ambalavanan2020using, habets2022development, jimeno2023classifying}. Text classification has been also used to better understand the structure of papers, for example by automatically predicting sections and headers in Electronic Health Records \citep{rosenthal2019leveraging}. Information retrieval focuses on enabling users to find and access the specific information they need from among vast amounts of available content. Various applications have been developed to improve the discovery of novel insights by more effectively aggregating data from existing knowledge databases, as well as improving article recommendation service \citep{martenot2022lisa, kart2022emati}. For instance, pubmedKB serves as a web server designed to extract and visualize semantic relationships between genes, diseases, chemicals, and variants within PubMed abstracts \citep{li2022pubmedkb}.
+General biomedical text mining spans various tasks, with multi-domain analysis standing out. This area focuses on designing methods or frameworks capable of addressing multiple NLP tasks through a unified strategy. An illustration of this is BioGPT, a generative transformer model, which, after being pre-trained on an extensive biomedical literature corpus, demonstrates its versatility across six different bioNLP challenges \citep{luo2022biogpt}. Named entity recognition and entity normalization are also challenges commonly tackled together. For example, \citep{tong2021multi} developed a multi-task model that simultaneously learns sentence-level and token-level labels for NER, utilizing BioBERT for text encoding and sharing hidden states across tasks. \cite{lu2021parameter} introduced an architecture that enhances pre-trained language models by integrating domain-specific knowledge from diverse sources such as the UMLS Metathesaurus and Wikipedia articles on diseases, through knowledge adapters and an attention-based controller, demonstrating performance improvements on various biomedical NLP tasks.
+
+The pharmacological domain utilizes relation extraction the most. This task involves identifying and extracting relationships between entities such as drugs, genes, or proteins from text, which is crucial for pharmacological research and drug development. For example, \cite{asada2023integrating} utilize different BERT models for drug-drug interaction extraction by integrating drug representations from a pharmaceutical knowledge graph and corpus text. \cite{guan2019leveraging} used contextual information in extracting long distance adverse drug events from clinical notes with BERT models. There were also overlaps between domains, such as work that introduced a system for detecting adverse drug reactions from text on social media by fine-tuning BERT \citep{hussain2021pharmacovigilance}.
 
 In the clinical domain, text classification is frequently utilized for predicting patient outcomes. For instance, in-hospital mortality predictions have been made by combining time series data from various medical devices with clinical notes found in electronic health records \citep{zhang2022pm2f2n, deznabi2021predicting}. Additionally, there are applications in mental health, such as the automated detection of mental conditions using transcribed patient recordings \citep{duan2023cda, aich2022towards}.
 
-General biomedical text mining spans various tasks, with multi-domain analysis standing out. This area focuses on designing methods or frameworks capable of addressing multiple NLP tasks through a unified strategy. An illustration of this is BioGPT, a generative Transformer language model, which, after being pre-trained on an extensive biomedical literature corpus, demonstrates its versatility across six different biomedical NLP challenges \citep{luo2022biogpt}. Named entity recognition and entity normalization are also challenges commonly tackled together. For example, \citep{tong2021multi} developed a multi-task model that simultaneously learns sentence-level and token-level labels for NER, utilizing BioBERT for text encoding and sharing hidden states across tasks. \cite{lu2021parameter} introduced an architecture that enhances pre-trained language models by integrating domain-specific knowledge from diverse sources such as the UMLS Metathesaurus and Wikipedia articles on diseases, through knowledge adapters and an attention-based controller, demonstrating performance improvements on various biomedical NLP tasks.
+Finally, social media platforms have been utilized for mental health screening, employing text classification to identify suicidal risk and predict mental health disorders from user-generated content, such as Reddit and Twitter posts \citep{zanwar2023fuse, sawhney2022risk, sawhney2020time}. Additionally, this NLP task has been applied for detecting nuanced emotional states within online health communities \citep{sosea2020canceremo}. Another recent development has been the use of fact verification techniques to authenticate statements related to COVID-19 \citep{hossain2020covidlies, liu2020adapting}.
 
-The pharmacological domain utilizes relation extraction the most. This task involves identifying and extracting relationships between entities such as drugs, genes, or proteins from text, which is crucial for pharmacological research and drug development. For example, \cite{asada2023integrating} utilize different BERT models for drug-drug interaction extraction by integrating drug representations from a pharmaceutical knowledge graph and corpus text. \cite{guan2019leveraging} used contextual information in extracting long distance adverse drug events from clinical notes with BERT models. There were also overlaps between domains, such as work that introduced a system for detecting adverse drug reactions from text on social media by fine-tuning BERT \citep{hussain2021pharmacovigilance}.
 
 \begin{figure}[!ht]
 \centering
@@ -205,17 +204,17 @@ The pharmacological domain utilizes relation extraction the most. This task invo
 
 \subsubsection*{Models overview and trends over time}
 
-The most prominently used LLMs were encoder-based BERT models (275 models, 91\%), followed by generative models like GPT and T5 (27, 9\%) (Figure \ref{fig:llms_overview_and_time_trends}).
+The most prominently used LLMs were encoder-based BERT models (275 models, 91\%), followed by generative models such as GPT and T5 (27, 9\%) (Figure \ref{fig:llms_overview_and_time_trends}).
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.4]{visuals/new_pdf/LLM_models_and_time_trend_2024.pdf} % Adjust the scale value as needed
-\caption{Most frequently used models and trends over time. Each paper could use more than one LLM.}
+\caption{\textbf{A}: Most frequently used models. \textbf{B}: Top 5 models utilized each year. Each paper could use more than one LLM.}
 \label{fig:llms_overview_and_time_trends}
 \end{center}
 \end{figure}
 
-Figure \ref{fig:llms_overview_and_time_trends} presents the annual usage trends of the top five LLMs. While BERT models are prominently used in earlier years, GPT models see increasing use in 2023. The data also shows that general-purpose models like BERT are replaced with more specialized models such as BioBERT and SciBERT.
+Figure \ref{fig:llms_overview_and_time_trends} presents the annual usage trends of the top five LLMs. While BERT models are prominently used in earlier years, GPT models see increasing use in 2023. The data also shows that general-purpose models such as BERT are replaced with more specialized models, e.g., BioBERT and SciBERT.
 
 
 \subsection*{Technical setup: hardware and programming languages}
@@ -224,12 +223,12 @@ The most commonly employed hardware were GPUs (92\%) (Figure \ref{fig:technical_
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.30]{visuals/new_pdf/technical_summary_2024.pdf} % Adjust the scale value as needed
-\caption{Reported technical setup. Each paper could use more than programming language and coding library.}
+\caption{Reported technical setup regarding hardware (\textbf{A}), programming language (\textbf{B}), and computational library (\textbf{C}) used for the method implementation. Each paper could use more than programming language and library.}
 \label{fig:technical_summary_2024}
 \end{center}
 \end{figure}
 
-The vast majority of studies used the Python programming language for their technical setup (157 publications, 91\%) (Figure \ref{fig:technical_summary_2024}). JAVA, R, Perl, PHP, AWK, and C were rarely used. HuggingFace (83 publications, 36\%), PyTorch (48, 21\%), and TensorFlow (30, 13\%) were the most commonly reported computational libraries for using LLMs (Figure \ref{fig:technical_summary_2024}) . Some studies used more specialized libraries like Stanford CoreNLP, spaCy, Keras, NLTK, and Torch. Notably, many studies (37) did not report the programming language and computational library used.
+The vast majority of studies used the Python programming language for their technical setup (157 publications, 91\%) (Figure \ref{fig:technical_summary_2024}). JAVA, R, Perl, PHP, AWK, and C were rarely used. HuggingFace (83 publications, 36\%), PyTorch (48, 21\%), and TensorFlow (30, 13\%) were the most commonly reported computational libraries for using LLMs (Figure \ref{fig:technical_summary_2024}) . Some studies used more specialized libraries such as Stanford CoreNLP, spaCy, Keras, NLTK, and Torch. Notably, many studies (37) did not report the programming language and computational library used.
 
 %\subsubsection*{Preprocessing}
 
@@ -243,21 +242,21 @@ The field of BioNLP relies heavily on the availability of standardized datasets 
 \begin{tabular}{llllll}
 \hline
 Task & Dataset & Frequency & Annotation Type & Text Type & Size \\ \hline
-\multirow{8}{*}{NER} & NCBI-disease & 21 & Disease & Abstract & 793 \\
- & BC5-disease & 14 & Disease & Abstract & 1,500 \\
- & BC2GM & 13 & Gene/Protein & Sentence & 20,000 \\
- & BC5-chem & 12 & Chemical & Abstract & 1,500 \\
- & JNLPBA & 9 & \begin{tabular}[c]{@{}l@{}}Protein, DNA, \\ RNA, cell line\end{tabular} & Abstract & 2,404 \\
- & BC4-chem & 6 & Chemical & Abstract & 10,000 \\
- & LINNAEUS & 5 & Species & Full text & 100 \\
- & Species-800 & 5 & Species & Abstract & 800 \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Relation\\ Extraction\end{tabular}} & ChemProt & 10 & \begin{tabular}[c]{@{}l@{}}Chemical-protein \\ interactions\end{tabular} & Abstract & 31,784 \\
- & DDIExtraction-2013 & 10 & \begin{tabular}[c]{@{}l@{}}Drug–drug \\ interaction\end{tabular} & \begin{tabular}[c]{@{}l@{}}Texts and\\ Abstract\end{tabular} & 1,017 \\
- & BC5-relations & 9 & \begin{tabular}[c]{@{}l@{}}Chemical-disease\\ interaction\end{tabular} & Abstract & 1,500 \\ \hline
-\begin{tabular}[c]{@{}l@{}}Question \\ Answering\end{tabular} & BioASQ & 6 & \begin{tabular}[c]{@{}l@{}}Question-answer\\ pairs and supporting\\ context\end{tabular} & \begin{tabular}[c]{@{}l@{}}Questions with\\ related documents\end{tabular} & 4,719 \\ \hline
-\multirow{4}{*}{Multiple} & MIMIC-III & 8 & Multi-label & EHR & 53,423 \\
- & EU-ADR & 5 & Drug, disorder, targets & Abstract & 100 \\
- & 2010 i2b2/VA & 5 & Multi-label & Clinical reports & 1748 \\
+\multirow{8}{*}{NER} & NCBI-disease \citep{dougan2014ncbi} & 21 & Disease & Abstract & 793 \\
+ & BC5-disease \citep{li2016biocreative} & 14 & Disease & Abstract & 1,500 \\
+ & BC2GM \citep{smith2008overview}& 13 & Gene/Protein  & Sentence & 20,000 \\
+ & BC5-chem \citep{li2016biocreative} & 12 & Chemical & Abstract & 1,500 \\
+ & JNLPBA \citep{collier2004introduction} & 9 & \begin{tabular}[c]{@{}l@{}}Protein, DNA, \\ RNA, cell line\end{tabular} & Abstract & 2,404 \\
+ & BC4-chem \citep{krallinger2015chemdner} & 6 & Chemical & Abstract & 10,000 \\
+ & LINNAEUS \citep{gerner2010linnaeus}& 5 & Species & Full text & 100 \\
+ & Species-800 \citep{pafilis2013species} & 5 & Species & Abstract & 800 \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Relation\\ Extraction\end{tabular}} & ChemProt \citep{krallinger2017overview} & 10 & \begin{tabular}[c]{@{}l@{}}Chemical-protein \\ interactions\end{tabular} & Abstract & 31,784 \\
+ & DDIExtraction-2013 \citep{herrero2013ddi} & 10 & \begin{tabular}[c]{@{}l@{}}Drug–drug \\ interaction\end{tabular} & \begin{tabular}[c]{@{}l@{}}Texts and\\ Abstract\end{tabular} & 1,017 \\
+ & BC5-relations \citep{li2016biocreative} & 9 & \begin{tabular}[c]{@{}l@{}}Chemical-disease\\ interaction\end{tabular} & Abstract & 1,500 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Question \\ Answering\end{tabular} & BioASQ \cite{nentidis2020results} & 6 & \begin{tabular}[c]{@{}l@{}}Question-answer\\ pairs and supporting\\ context\end{tabular} & \begin{tabular}[c]{@{}l@{}}Questions with\\ related documents\end{tabular} & 4,719 \\ \hline
+\multirow{4}{*}{Multiple} & MIMIC-III \citep{johnson2016mimic} & 8 & Multi-label & EHR & 53,423 \\
+ & EU-ADR \citep{van2012eu} & 5 & Drug, disorder, targets & Abstract & 100 \\
+ & 2010 i2b2/VA \citep{uzuner20112010} & 5 & Multi-label & Clinical reports & 1748 \\
  & Systematic Reviews & 5 & Multi-label & Full text & n.a. \\ \hline
 \end{tabular}
 \end{adjustbox}
@@ -268,7 +267,7 @@ Task & Dataset & Frequency & Annotation Type & Text Type & Size \\ \hline
 Many of the reported datasets are collaborative efforts released for competitions and shared tasks, and designed to facilitate fair comparisons among different research teams. Key competitions and shared tasks that emerged from the eligible studies include:
 
 \begin{itemize}
-    \item \textbf{Informatics for Integrating Biology and the Bedside (i2b2) Challenges:}  The i2b2 Center, active from 2004 to 2014 and funded by the NIH, focuses on releasing clinical records for NLP research. Since 2018, this initiative is officially known as n2c2\footnote{\url{https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/}}. The most frequently used dataset from this area is the 2010 i2b2/VA for concepts, assertions, and relations extractions. Other datasets mentioned in the reviewed papers include the 2012 corpus annotated for events, temporal expressions and temporal relations \citep{chen2019general}, and the de-identification datasets of i2b2 2014 \citep{tang2019identification}. Three studies utilized data from the 2019 n2c2/OHNLP track on clinical semantic textual similarity \citep{mahajan2020identification,wang2021knowledge,xiong2023eara}, and one study tackled the 2022 n2c2 challenge, focusing on medication extraction and event/context classification \citep{chen2023contextualized}.
+    \item \textbf{Informatics for Integrating Biology and the Bedside (i2b2) Challenges:}  The i2b2 Center, active from 2004 to 2014 and funded by the NIH, focuses on releasing clinical records for NLP research. Since 2018, this initiative is officially known as n2c2\footnote{\url{https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/}}. The most frequently used dataset from this area is the 2010 i2b2/VA for concepts, assertions, and relation extraction. Other datasets mentioned in the reviewed papers include the 2012 corpus annotated for events, temporal expressions and temporal relations \citep{chen2019general}, and the de-identification datasets of i2b2 2014 \citep{tang2019identification}. Three studies utilized data from the 2019 n2c2/OHNLP track on clinical semantic textual similarity \citep{mahajan2020identification,wang2021knowledge,xiong2023eara}, and one study tackled the 2022 n2c2 challenge, focusing on medication extraction and event/context classification \citep{chen2023contextualized}.
 
     \item \textbf{BioCreative (BC) Workshops:} These workshops host challenges related to the extraction and annotation of biological entities and their relationships from scientific literature. Notable datasets produced from these workshops include BC5, which covers disease and chemical annotations, and BC4, focused on chemical annotations. Additionally, 8 further papers reported utilizing a BioCreative corpus, with LitCovid and DrugProt being the most prominent \citep{lin2022bert,rabby2023multi,asada2023integrating,aldahdooh2023mining}.
 
@@ -285,7 +284,7 @@ Many of the reported datasets are collaborative efforts released for competition
 
 41\% of the publications reported on the development of new datasets. These datasets were mostly in the area of text classification, information retrieval/extraction, and named entity recognition (Figure \ref{fig:custom_data}).
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.4]{visuals/new_pdf/custom_dataset_nlp_task_2024.pdf} % Adjust the scale value as needed
 \caption{Target applications for which custom data has been annotated or collected.}
@@ -294,7 +293,7 @@ Many of the reported datasets are collaborative efforts released for competition
 \end{figure}
 
 \subsection*{Transparency of methods}
-There was a moderate level of code (e.g., algorithms and computational methods) transparency with less than 40\% of the studies making their code available alongside the publication (Figure \ref{fig:rs_transparency_overview}). At the same time, there was a high level of data transparency with over three quarters of studies making their datasets fully available. Finally, only a minority of studies hosted applications for end-users with a higher propensity of biomedical journals compared to NLP venues.
+There was a moderate level of code (e.g., algorithms and computational methods transparency) with fewer than 40\% of the studies making their code available alongside the publication (Figure \ref{fig:rs_transparency_overview}). At the same time, there was a high level of data transparency with over three quarters of studies making their datasets fully available. Finally, only a minority of studies hosted applications for end-users with a higher propensity of biomedical journals compared to NLP venues.
 
 
 \begin{figure}[!ht]
@@ -312,23 +311,26 @@ The objective of our scoping review was to explore and organize the specific tas
 
 \subsubsection*{Data source of bioNLP}
 
-As information source, most LLM approaches only made use of information collected from scientific abstracts, likely in part representing the easy and abundant availability as well as the condensed format of this text type. However, information from abstracts might not be well aligned with the corresponding full reports. For example, \cite{li2017scoping} analyse the state of reporting of primary biomedical research and find inconsistencies with respect to the reported sample sizes, outcome measures, result presentation and interpretation, and conclusions or recommendations between abstracts and full texts. This suggests the need to be cautious when developing applications that rely only on the information reported in abstracts, especially for evidence-synthesis. Article abstracts and article bodies can differ not only in content, but also in their structural, linguistic, and semantic composition \citep{cohen2010structural}. LLMs are generally well equipped to handle a wide variety of linguistic styles and structures due to their vast training on diverse text corpora. However, those models can still struggle with the subtlety and specificity required in academic texts, especially if their training data does not sufficiently cover academic language. Our review also showed the importance of challenge evaluations organized by the text-mining research community to assess and advance NLP research for biomedicine \citep{huang2016community}.
+As information source, most LLM approaches only made use of information collected from scientific abstracts, likely in part representing the easy and abundant availability as well as the condensed format of this text type. However, information from abstracts might not be well aligned with the corresponding full reports. For example, \cite{li2017scoping} analyse the state of reporting of primary biomedical research and find inconsistencies with respect to the reported sample sizes, outcome measures, result presentation and interpretation, and conclusions or recommendations between abstracts and full texts. This suggests the need to be cautious when developing applications that rely only on the information reported in abstracts, especially for evidence-synthesis. Article abstracts and article bodies can differ not only in content, but also in their structural, linguistic, and semantic composition \citep{cohen2010structural}. LLMs are generally well equipped to handle a wide variety of linguistic styles and structures due to their vast training on diverse text corpora. However, those models can still struggle with the subtlety and specificity required in academic texts, especially if their training data does not sufficiently cover academic language. %Our review also showed the importance of challenge evaluations organized by the text-mining research community to assess and advance NLP research for biomedicine \citep{huang2016community}.
 
-\subsubsection*{Diverse biomedical applications and potential considerations}
+\subsubsection*{Practical Limitations of LLMs for BioNLP}
 
-LLMs have expanded the scope of BioNLP applications. The general biomedical text mining applications showed dedication to improving the efficacy of traditional NLP tasks within biomedical texts, such as enhancing NER systems, addressing the challenge of variation in entity linking, and striving for the unification of critical NLP tasks \citep{ji2020bert,ivanisenko2022new,naseem2022benchmarking}. The main downstream use-case for this efforts has been knowledge management, i.e., for curating, extracting, and summarizing useful information from the vast volume of biomedical literature. With this, LLMs seem to provide an ample opportunity to overcome the increasing volumes of biomedical data being published \citep{bornmann2015growth,ineichen2023data}. 
+LLMs have notably advanced the field of BioNLP, focusing on refining traditional NLP tasks. This includes enhancements in NER and entity linking systems, and the consolidation of key NLP tasks for more efficient knowledge management. The efforts for curating and summarizing biomedical literature address the challenge posed by the rapidly growing volume of biomedical data, suggesting LLMs as a promising solution for managing this information deluge \citep{ji2020bert,ivanisenko2022new,naseem2022benchmarking,bornmann2015growth,ineichen2023data}.
 
 However, our review showed that LLMs have been mostly used as a supportive tool by assisting with preliminary tasks in biomedical research, but they have not yet been capable of replacing more nuanced and critical tasks entirely. For example, while LLMs can expedite the initial screening of literature for relevant studies and assist in the extraction of data from texts, they cannot replace the expert analysis required for interpreting study results, assessing the quality of evidence, or making clinical decisions \citep{khraisha2023can,tang2023evaluating}.
 
-Furthermore, considerations include the challenge of maintaining model accuracy amidst the fast pace of medical knowledge evolution, the models' limited interpretability, susceptibility to hallucinations and biases, and ethical and privacy concerns related to handling sensitive patient information. These issues emphasize the importance of cautious and responsible LLM implementation in the biomedical domain \citep{ye2023cognitive,lin2023mind, thirunavukarasu2023large, wang2023decodingtrust,tian2024opportunities}.
+Further considerations include the challenge of maintaining model accuracy amidst the fast pace of medical knowledge evolution, the models' limited interpretability, susceptibility to hallucinations and biases, and ethical and privacy concerns related to handling sensitive patient information. These issues emphasize the importance of cautious and responsible LLM implementation in the biomedical domain \citep{ye2023cognitive,lin2023mind, thirunavukarasu2023large, wang2023decodingtrust,tian2024opportunities}.
 
 \subsubsection*{Emergence of generative LLMs}
-While BERT-based models have been the predominantly used LLMs, there was a notable surge in GPT-like models in 2023. Generative models have been benchmarked against BERT-based approaches as a classification and information extraction technique for biomedical literature curation \citep{patra2023automated, stepanov2023comparative,karkera2023leveraging}. Notably, generative models have been applied in innovative ways, such as in the work of \cite{kim2023symptomify}, where they were used to generate symptom definitions, thereby enriching datasets and enhancing the precision of human annotators. Furthermore, models like BART and T5 have been used for summarizing radiology reports, which could aid clinical decision-making, as demonstrated by \cite{wu2023knowlab}. The interactive capabilities of ChatGPT have been also explored for preliminary screening in cases of mild cognitive impairment \cite{wang2023text}. 
+While BERT-based models have been the predominantly used LLMs, there was a notable surge in GPT-like models in 2023. Generative models have been benchmarked against BERT-based approaches as a classification and information extraction technique for biomedical literature curation \citep{patra2023automated, stepanov2023comparative,karkera2023leveraging}. Notably, they have also been applied in innovative ways, such as generating symptom definitions to enrich datasets and improve annotator precision, as well as for summarizing radiology reports, potentially aiding clinical decision-making \citep{kim2023symptomify, wu2023knowlab}. ChatGPT's interactive capabilities have also been explored for preliminary screening in cases of mild cognitive impairment \cite{wang2023text}.
 
-This trend suggests not only the potential for refinement and augmentation of existing NLP methodologies via generative models, but also the development of entirely new avenues of research, enabled by LLMs.
+Very recently, the landscape of generative biomedical models has been enriched by open-source solutions such as LLama 2, MEDITRON, and BioMistral  \citep{touvron2023llama, chen2023meditron, labrak2024biomistral}. These models are rapidly narrowing the performance gap with proprietary counterparts. They stand out by providing open access and introducing more compact versions that can efficiently operate on local computing resources, exemplified by tools like ollama\footnote{\url{https://ollama.com/}}. 
+%These current trends are not yet reflected in our study due to the rapid evolution of the field, which signals the necessity for continuous research to grasp the full extent of advancements and the novel applications enabled by LLMs.
+
+%This trend suggests not only the potential for refinement and augmentation of existing NLP methodologies via generative models, but also the development of entirely new avenues of research, enabled by LLMs.
 
 \subsubsection*{Transparency of methods}
-Finally, while a minority of studies present end-user applications, a notable portion leverages openly available datasets or share their proprietary datasets. Despite this positive trend, only around one third of these studies includes references to their code repositories, a critical factor for ensuring the validity, reproducibility, and generalizability of their methods. While guidelines for reporting experimental setups and results exist the NLP and machine learning fields, there seems to be a need for further approaches to improve the reporting rates \citep{dodge2019show, kapoor2023reforms,magnusson2023reproducibility}. Moreover, the use of API-based models like GPT introduces additional challenges for research transparency and reproducibility \citep{liesenfeld2023opening}. %\citep{goldacre2019researchers}
+Finally, while a minority of studies present end-user applications, a notable portion leverages openly available datasets or share their proprietary datasets. Despite this positive trend, only around one third of these studies includes references to their code repositories, a critical factor for ensuring the validity, reproducibility, and generalizability of their methods \citep{goldacre2019researchers, kim2020data}. While guidelines for reporting experimental setups and results exist the NLP and machine learning fields, there seems to be a need for further approaches to improve the reporting rates \citep{dodge2019show, kapoor2023reforms,magnusson2023reproducibility}. Moreover, the use of API-based models such as GPT introduces additional challenges for research transparency and reproducibility \citep{liesenfeld2023opening}. Shifting towards open-source models can address these issues by providing full access to their codebase, fostering an environment where research findings can be easily replicated, scrutinized, and extended by the wider scientific community. %\citep{goldacre2019researchers}
 
 \section*{Limitations}
 \label{sec:limitations}
@@ -341,14 +343,22 @@ Second, we omitted articles published in languages other than English, which mig
 \section*{Conclusion}
 \label{sec:conclusion}
 This scoping review provides an overview how LLMs are used for NLP tasks in biomedicine and health sciences. The findings from our scoping review underline the rapid progress of LLMs, emphasizing their potential in accelerating discovery and enhancing health outcomes. These advancements signal a promising avenue for leveraging LLMs in biomedicine and health, given their capacity to process and analyze complex biomedical texts with high proficiency.
-However, we also acknowledges the inherent risks and challenges associated with the deployment of LLMs like ChatGPT in these sensitive areas, including evidence synthesis. Issues such as the generation of fabricated information and concerns over legal and privacy implications pose significant hurdles to the safe and ethical application of these technologies. These challenges highlight the need for careful consideration and management to mitigate risks associated with the use of LLMs in biomedicine and health.
+However, we also acknowledges the inherent risks and challenges associated with the deployment of LLMs such as ChatGPT in these sensitive areas, including evidence synthesis. Issues such as the generation of fabricated information and concerns over legal and privacy implications pose significant hurdles to the safe and ethical application of these technologies. These challenges highlight the need for careful consideration and management to mitigate risks associated with the use of LLMs in biomedicine and health.
 
 
 \section*{Acknowledgments}
 We thank Alisa Berger for conducting the comprehensive literature search.
 
 \section*{Data and code availability statement}
-All data and code that support the findings of this study are available at LINK (data including meta-data) and https://osf.io/9fgru  (R code). For any questions regarding the data, meta-data, or analysis code, contact the corresponding author, BVI.
+All data and code that support the findings of this study are available in a public GitHub repository\footnote{\url{https://github.com/Ineichen-Group/LiteratureReview-LLM-Biomedicine/tree/main}}. For any questions regarding the data, meta-data, or analysis code, contact the corresponding author, SED.
+
+\section*{Funding}
+Swiss National Science Foundation (No. 407940-206504, to BVI)
+UZH Digital Entrepreneur Fellowship (No number, to BVI).
+The sponsors had no role in the design and conduct of the study; collection, management, analysis, and interpretation of the data; preparation, review, or approval of the manuscript; and decision to submit the manuscript for publication.
+
+\section*{Competing interests}
+The authors declare no conflicts of interest related to this study.
 
 %Additional information can be given in the template, such as to not include funder information in the acknowledgments section.
 
@@ -418,7 +428,7 @@ Clinical Notes & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{51} \\ \h
 \end{table}
 
 \subsubsection*{GPT-style Language Models}
-GPT-like models operate on a unidirectional framework, processing text from left to right and utilizing the Transformer decoder architecture, making it well fit for generative tasks like text completion and content creation. Its training is focused on predicting the next word in a sequence, optimizing the model for generating coherent and contextually relevant text. While BERT-like architectures typically require task-specific fine-tuning to achieve optimal performance, models like GPT-3 demonstrate few-shot and zero-shot learning capabilities. Few-shot learning refers to the model's ability to perform tasks with a very limited amount of training data, while zero-shot learning refers to its ability to perform tasks without any task-specific training data. This is achieved through advanced prompting techniques and in-context learning, where the model generates responses based on the context provided in the prompt \citep{zhang2021commentary}.
+GPT-like models operate on a unidirectional framework, processing text from left to right and utilizing the Transformer decoder architecture, making it well fit for generative tasks such as text completion and content creation. Its training is focused on predicting the next word in a sequence, optimizing the model for generating coherent and contextually relevant text. While BERT-like architectures typically require task-specific fine-tuning to achieve optimal performance, models like GPT-3 demonstrate few-shot and zero-shot learning capabilities. Few-shot learning refers to the model's ability to perform tasks with a very limited amount of training data, while zero-shot learning refers to its ability to perform tasks without any task-specific training data. This is achieved through advanced prompting techniques and in-context learning, where the model generates responses based on the context provided in the prompt \citep{zhang2021commentary}.
 
 % \subsection*{Overview of custom-annotated datasets}
 

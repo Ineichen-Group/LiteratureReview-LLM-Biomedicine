@@ -29,7 +29,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
 
-\RequirePackage[left=5cm,%
+\RequirePackage[left=3.5cm,%
                 right=2cm,%
                 top=2.25cm,%
                 bottom=2.25cm,%
@@ -40,8 +40,8 @@
                 labelsep=period,%
                 justification=raggedright]{caption}
                 
-\RequirePackage{natbib}
-\bibliographystyle{apalike}
+%\RequirePackage{natbib}
+\bibliographystyle{unsrt}
          
 %
 % headers and footers
@@ -182,7 +182,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,0} % Color of section headings
-\definecolor{color2}{RGB}{182,193,251} % Color of the box behind the abstract
+\definecolor{color2}{RGB}{232,232,232} % Color of the box behind the abstract
 \newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
 
 \renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}
